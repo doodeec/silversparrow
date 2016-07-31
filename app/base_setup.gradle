@@ -1,0 +1,47 @@
+final VERSION_MAJOR = 0 // max two digits
+final VERSION_MINOR = 1 // max two digits
+final VERSION_PATCH = 0 // max two digits
+
+final PROJECT_NAME = "com.doodeec.silversparrow"
+
+android {
+    defaultConfig {
+        versionCode VERSION_MAJOR * 10000 + VERSION_MINOR * 100 + VERSION_PATCH
+        versionName "${VERSION_MAJOR}.${VERSION_MINOR}.${VERSION_PATCH}"
+
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    }
+
+    dexOptions {
+        incremental true
+        maxProcessCount 2
+        javaMaxHeapSize "4g"
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+}
+
+task copyAppBuildFile(type: Copy) {
+    from "${buildDir}/outputs/apk/${project.name}-release.apk"
+    into "${rootDir}/"
+    rename("${project.name}-release.apk", "${PROJECT_NAME}-${android.defaultConfig.versionName}.apk")
+}
+
+task buildApp(dependsOn: ['assembleRelease', 'copyAppBuildFile']) {
+}
+
+
+//make sure these environment variables are set in OS
+//it is important for retrolambda to setup environment variables
+retrolambda {
+    jdk System.getenv("JAVA8_HOME")
+    oldJdk System.getenv("JAVA7_HOME")
+    javaVersion JavaVersion.VERSION_1_7
+}
+
+task grantAnimationPermission(type: Exec) {
+    commandLine "adb shell pm grant com.doodeec.silversparrow.debug android.permission.SET_ANIMATION_SCALE".split(' ')
+}

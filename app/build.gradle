@@ -1,0 +1,88 @@
+apply plugin: 'com.android.application'
+apply plugin: 'com.neenbedankt.android-apt'
+apply plugin: 'me.tatarka.retrolambda'
+//apply plugin: 'io.fabric'
+
+apply from: "./base_setup.gradle"
+apply from: "./sign.gradle"
+
+android {
+    compileSdkVersion 24
+    buildToolsVersion "24.0.1"
+
+    defaultConfig {
+        applicationId "com.doodeec.silversparrow"
+        minSdkVersion 15
+        targetSdkVersion 24
+    }
+
+    buildTypes {
+        debug {
+            applicationIdSuffix ".debug"
+        }
+    }
+}
+
+dependencies {
+    compile 'com.jakewharton.timber:timber:4.1.2'
+
+    compile 'com.android.support:appcompat-v7:24.1.1'
+    compile 'com.android.support:design:24.1.1'
+    compile 'com.android.support:recyclerview-v7:24.1.1'
+    compile 'com.google.code.gson:gson:2.4'
+    compile 'com.google.guava:guava:19.0'
+
+    //butterknife
+    compile 'com.jakewharton:butterknife:8.2.1'
+    apt 'com.jakewharton:butterknife-compiler:8.2.1'
+
+    //crashlytics
+    /*compile('com.crashlytics.sdk.android:crashlytics:2.5.5@aar') {
+        transitive = true;
+    }*/
+
+    // retrofit
+    compile 'com.squareup.retrofit2:retrofit:2.1.0'
+    compile 'com.squareup.retrofit2:adapter-rxjava:2.1.0'
+    compile 'com.squareup.retrofit2:converter-gson:2.1.0'
+    compile 'com.squareup.okhttp3:logging-interceptor:3.4.1'
+
+    // mosby
+    compile 'com.hannesdorfmann.mosby:mvp:2.0.1'
+
+    // dagger
+    apt 'com.google.dagger:dagger-compiler:2.5'
+    compile 'com.google.dagger:dagger:2.5'
+    provided 'javax.annotation:jsr250-api:1.0'
+
+    // rx
+    compile 'io.reactivex:rxandroid:1.2.1'
+
+    //ormlite
+    compile 'com.j256.ormlite:ormlite-android:5.0'
+
+    //picasso
+    compile 'com.squareup.picasso:picasso:2.5.2'
+
+    //test
+    testCompile 'com.google.dagger:dagger-compiler:2.5'
+    testCompile 'junit:junit:4.12'
+    testCompile 'org.hamcrest:hamcrest-core:1.3'
+    testCompile 'org.mockito:mockito-core:1.9.5'
+
+    //androidTest
+    androidTestCompile ('com.android.support.test.espresso:espresso-core:2.2.2') {
+        exclude module: 'support-annotations'
+    }
+    androidTestCompile ('com.android.support.test.espresso:espresso-contrib:2.2.1') {
+        exclude group: 'com.android.support', module: 'appcompat'
+        exclude group: 'com.android.support', module: 'support-v4'
+        exclude module: 'recyclerview-v7'
+        exclude module: 'cardview-v7'
+        exclude module: 'support-annotations'
+    }
+    androidTestCompile ('com.android.support.test:runner:0.5') {
+        exclude module: 'support-annotations'
+    }
+    androidTestCompile 'com.squareup.spoon:spoon-client:1.6.2'
+}

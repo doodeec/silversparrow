@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:tools="http://schemas.android.com/tools"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:background="@android:color/white"
+              android:clickable="true"
+              android:focusable="true"
+              android:focusableInTouchMode="true"
+              android:orientation="vertical"
+              tools:ignore="RtlHardcoded">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="?android:attr/selectableItemBackground"
+        android:padding="@dimen/padding">
+
+        <ImageView
+            android:id="@+id/contact_list_item_image"
+            android:layout_width="@dimen/contact_image_size"
+            android:layout_height="@dimen/contact_image_size"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="@dimen/padding"
+            android:contentDescription="@string/contact_image_cdesc"
+            android:scaleType="centerCrop"
+            android:src="@drawable/placeholder" />
+
+        <TextView
+            android:id="@+id/contact_list_item_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/contact_list_item_image"
+            android:ellipsize="end"
+            android:maxLines="2"
+            android:textSize="@dimen/text_default"
+            android:textStyle="bold"
+            tools:text="Jozko Mrkvicka" />
+
+        <TextView
+            android:id="@+id/contact_list_item_phone"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/contact_list_item_name"
+            android:layout_toRightOf="@id/contact_list_item_image"
+            android:textSize="@dimen/text_smaller"
+            tools:text="0901 000 111" />
+
+    </RelativeLayout>
+
+    <View style="@style/Separator" />
+
+</LinearLayout>

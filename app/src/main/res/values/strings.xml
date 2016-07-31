@@ -1,0 +1,29 @@
+<resources>
+    <string name="app_name">SilverSparrow</string>
+
+    <!-- Common -->
+    <string name="ok" translatable="false">OK</string>
+    <string name="cancel">Cancel</string>
+    <string name="loading">Loading…</string>
+
+    <string name="contact_image_cdesc">Contact image</string>
+    <string name="phone_label">Phone:</string>
+    <string name="action_add_contact_title">Add contact</string>
+    <string name="action_refresh_title">Refresh data</string>
+    <string name="new_contact_activity_title">Add New Contact</string>
+    <string name="empty_list">Empty list</string>
+    <string name="contact_name_hint">Contact Name</string>
+    <string name="contact_phone_hint">Contact Phone</string>
+    <string name="add">Add</string>
+    <string name="pick_contact">Pick contact to display detail of</string>
+
+    <!--Errors-->
+    <string name="loading_error_contacts">Error loading contacts</string>
+    <string name="loading_error_orders">Error loading orders</string>
+
+    <!--Validation-->
+    <string name="validation_error_name">Name has to have at least 5 characters</string>
+    <string name="validation_error_phone">Phone has to have at least 5 numbers</string>
+    <string name="validator_dialog_title">Invalid data</string>
+    <string name="contact_not_found">Contact was not found</string>
+</resources>
